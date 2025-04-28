@@ -1,0 +1,104 @@
+Users.html
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Usuarios - Laboratorio de Células Madre</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Font Awesome CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-gray-100 font-sans">
+  <!-- Menú de navegación -->
+  <nav class="bg-blue-600 text-white p-4">
+    <div class="container mx-auto flex justify-between items-center">
+      <h1 class="text-xl font-bold">Laboratorio de Células Madre</h1>
+      <div id="navLinks" class="space-x-4">
+        <a href="index.html" class="hover:underline">Inventario</a>
+        <a href="shipments.html" class="hover:underline">Envíos</a>
+        <a href="suppliers.html" class="hover:underline">Proveedores</a>
+        <a href="brands.html" class="hover:underline">Marcas</a>
+        <a href="users.html" class="hover:underline font-bold">Usuarios</a>
+      </div>
+      <button id="logoutBtn" class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600">
+        <i class="fa fa-sign-out-alt"></i> Cerrar Sesión
+      </button>
+    </div>
+  </nav>
+
+  <div class="container mx-auto p-4">
+    <h1 class="text-2xl font-bold text-center mb-6">Gestión de Usuarios</h1>
+
+    <!-- Búsqueda -->
+    <div class="mb-4">
+      <input type="text" id="search" class="w-full p-2 border rounded" placeholder="Buscar por nombre, email o rol">
+    </div>
+
+    <!-- Formulario -->
+    <div class="bg-white p-6 rounded-lg shadow-md mb-6">
+      <form id="userForm" class="space-y-4">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-sm font-medium">Nombre</label>
+            <input type="text" id="name" class="w-full p-2 border rounded" required>
+          </div>
+          <div>
+            <label class="block text-sm font-medium">Email</label>
+            <input type="email" id="email" class="w-full p-2 border rounded" required>
+          </div>
+          <div>
+            <label class="block text-sm font-medium">Usuario</label>
+            <input type="text" id="username" class="w-full p-2 border rounded" required>
+          </div>
+          <div>
+            <label class="block text-sm font-medium">Contraseña</label>
+            <input type="password" id="password" class="w-full p-2 border rounded" required>
+          </div>
+          <div>
+            <label class="block text-sm font-medium">Rol</label>
+            <select id="role" class="w-full p-2 border rounded" required>
+              <option value="Administrador">Administrador</option>
+              <option value="Usuario">Usuario</option>
+            </select>
+          </div>
+        </div>
+        <input type="hidden" id="userId">
+        <button type="submit" id="submitBtn" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
+          <i class="fa fa-plus"></i> Agregar
+        </button>
+        <button type="button" id="cancelBtn" class="hidden bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600">
+          Cancelar
+        </button>
+      </form>
+    </div>
+
+    <!-- Tabla -->
+    <div class="bg-white p-6 rounded-lg shadow-md">
+      <table class="w-full table-auto">
+        <thead>
+          <tr class="bg-gray-200">
+            <th class="p-2">ID</th>
+            <th class="p-2">Nombre</th>
+            <th class="p-2">Email</th>
+            <th class="p-2">Usuario</th>
+            <th class="p-2">Rol</th>
+            <th class="p-2">Acciones</th>
+          </tr>
+        </thead>
+        <tbody id="userTable" class="divide-y divide-gray-200"></tbody>
+      </table>
+      <!-- Paginación -->
+      <div class="mt-4 flex justify-between">
+        <button id="prevPage" class="bg-gray-300 px-4 py-2 rounded disabled:opacity-50">Anterior</button>
+        <span>Página <span id="currentPage">1</span> de <span id="totalPages">1</span></span>
+        <button id="nextPage" class="bg-gray-300 px-4 py-2 rounded disabled:opacity-50">Siguiente</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/users.js"></script>
+</body>
+</html>
